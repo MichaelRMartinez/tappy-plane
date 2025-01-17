@@ -1,17 +1,32 @@
 extends CharacterBody2D
 
-const GRAVITY: float = 300.0
-const POWER: float = -200.0
+const GRAVITY: float = 1000.0
+const POWER: float = -350.0
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	print(velocity)
+	#falling
 	velocity.y += GRAVITY * delta
+	
 	fly()
 	move_and_slide()
+	
+	if is_on_floor() == true:
+		die()
 
 
 func fly() -> void:
 	if Input.is_action_just_pressed("fly") == true:
 		velocity.y = POWER
+
+
+func die() -> void:
+	# stop invoking physics process
+	set_physics_process(false)
+	# stop animation when death
+	animated_sprite_2d.stop()
