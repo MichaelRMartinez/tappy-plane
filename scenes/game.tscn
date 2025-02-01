@@ -24,4 +24,4 @@ position = Vector2(8, 875)
 scale = Vector2(0.75, 0.75)
 
 [node name="Pipes" parent="." instance=ExtResource("4_wvidg")]
-position = Vector2(352, 257)
+position = Vector2(352, 410)
